@@ -1,0 +1,5 @@
+E:\kirichenec\GoogleDrive\LittleProjects\FIOtoLoginPassword\DataRules\bin\Release\DataRules.dll
+E:\kirichenec\GoogleDrive\LittleProjects\FIOtoLoginPassword\DataRules\bin\Release\DataRules.pdb
+E:\kirichenec\GoogleDrive\LittleProjects\FIOtoLoginPassword\DataRules\obj\Release\DataRules.dll
+E:\kirichenec\GoogleDrive\LittleProjects\FIOtoLoginPassword\DataRules\obj\Release\DataRules.pdb
+E:\kirichenec\GoogleDrive\LittleProjects\FIOtoLoginPassword\DataRules\obj\Release\DataRules.csprojResolveAssemblyReference.cache

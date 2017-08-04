@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="FNtoLoginPassword.View.Controls.SettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:rules="clr-namespace:DataRules;assembly=DataRules"
+             mc:Ignorable="d"
+             Background="{DynamicResource MaterialDesignPaper}"
+             TextElement.FontSize="14"
+             TextElement.FontWeight="Regular"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto">
+    <StackPanel Orientation="Vertical" MinWidth="400">
+        <StackPanel.Resources>
+            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+                <Setter Property="Margin" Value="0,0,8,8"/>
+            </Style>
+            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}">
+                <Setter Property="Margin" Value="0,0,8,16"/>
+                <Setter Property="materialDesign:TextFieldAssist.TextBoxViewMargin" Value="1,0,1,0"/>
+                <Setter Property="materialDesign:HintAssist.FloatingScale" Value="0.75"/>
+            </Style>
+            <Style TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                <Setter Property="Margin" Value="0,10,8,16"/>
+                <Setter Property="materialDesign:TextFieldAssist.TextBoxViewMargin" Value="1,0,1,0"/>
+                <Setter Property="materialDesign:HintAssist.FloatingScale" Value="0.75"/>
+            </Style>
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                <Setter Property="Margin" Value="0,0,8,18"/>
+                <Setter Property="Width" Value="400"/>
+                <Setter Property="TextWrapping" Value="Wrap"/>
+                <Setter Property="materialDesign:TextFieldAssist.TextBoxViewMargin" Value="1,0,1,0"/>
+                <Setter Property="materialDesign:HintAssist.FloatingScale" Value="0.75"/>
+            </Style>
+        </StackPanel.Resources>
+
+        <StackPanel Margin="24,24,16,16" Orientation="Vertical">
+            <TextBlock Margin="0,0,8,8"
+                       Style="{StaticResource SubheadingTextBlock}"
+                       Text="Settings"/>
+
+            <TextBox Name="TempPasswordLength"
+                     materialDesign:HintAssist.Hint="Password length">
+                <TextBox.Text>
+                    <Binding Path="TempPasswordLength" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <rules:NotEmptyValidationRule  ValidatesOnTargetUpdated="True"/>
+                            <rules:NotNegativeValidationRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox Name="TempPasswordSymbols"
+                     materialDesign:HintAssist.Hint="Password symbols">
+                <TextBox.Text>
+                    <Binding Path="TempPasswordSymbols" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <rules:NotEmptyValidationRule  ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Dark theme" Margin="0,0,8,8"/>
+                <ToggleButton Margin="0,0,8,8"
+                              IsChecked="{Binding TempIsBlackTheme, Mode=TwoWay}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Command="{Binding CloseSettingsCommand}">
+                <TextBlock Text="Cancel" Margin="0"/>
+            </Button>
+            <Button Command="{Binding SaveSettingsCommand}">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                        <Setter Property="IsEnabled" Value="False"/>
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=TempPasswordLength, Path=(Validation.HasError)}" Value="False"/>
+                                    <Condition Binding="{Binding ElementName=TempPasswordSymbols, Path=(Validation.HasError)}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Resources>
+                <TextBlock Text="Save" Margin="0"/>
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

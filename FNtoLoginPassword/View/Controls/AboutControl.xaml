@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="FNtoLoginPassword.View.Controls.AboutControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="{DynamicResource MaterialDesignPaper}"
+             TextElement.FontSize="13"
+             TextElement.FontWeight="Regular"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             MaxWidth="400">
+    <Grid>
+        <StackPanel Margin="16" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Margin="8,8,0,0">
+                <Image Source="/FNtoLoginPassword;component/Images/Icon.ico"
+                       Margin="0,0,8,8"
+                       Height="64"
+                       VerticalAlignment="Center"/>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center"
+                       Margin="0,0,8,8">
+                    <TextBlock Text="FNtoLoginPassword" Style="{StaticResource MaterialDesignHeadlineTextBlock}"/>
+                    <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}">
+                        Developer:
+                        <Hyperlink NavigateUri="https://www.fb.com/kirichenec"
+                                   ToolTip="Go to FB page"
+                                   Command="{Binding OpenExternalLinkCommand}"
+                                   CommandParameter="https://www.fb.com/kirichenec">
+                            Kirichenko Igor
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}">
+                        Icon:
+                        <Hyperlink NavigateUri="https://www.flaticon.com/free-icon/shuffle_339765#"
+                                   ToolTip="Go to FlatIcon page"
+                                   Command="{Binding OpenExternalLinkCommand}"
+                                   CommandParameter="https://www.flaticon.com/free-icon/shuffle_339765#">
+                            Cursor Creative
+                        </Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+
+            <TextBlock TextWrapping="Wrap" Margin="8,8,8,0">
+                <Run>
+                    The program generate login:password by full name.
+                </Run>
+            </TextBlock>
+
+            <TextBlock TextWrapping="Wrap" Margin="8,8,8,0">
+                <Run>
+                    You can change the length and symbols of the password by changing the settings.
+                </Run>
+            </TextBlock>
+        </StackPanel>
+
+        <Button VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="5"
+                Padding="3"
+                Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                Height="{Binding Width, RelativeSource={RelativeSource Self}}">
+            <materialDesign:PackIcon Kind="Close" Margin="0" Padding="0"/>
+        </Button>
+    </Grid>
+</UserControl>
