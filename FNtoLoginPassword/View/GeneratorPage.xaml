@@ -1,19 +1,18 @@
-﻿<Page x:Class="FNtoLoginPassword.MainPage"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="clr-namespace:FNtoLoginPassword.View.Controls"
-        Height="300" Width="500"
-        Title="FullName to Login:Password"
-        Background="{DynamicResource MaterialDesignPaper}"
-        DataContext="{Binding Main, Source={StaticResource Locator}}"
-        FontFamily="{DynamicResource MaterialDesignFont}"
-        MinHeight="400" MinWidth="550"
-        TextElement.FontSize="14"
-        TextElement.FontWeight="Regular"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        TextOptions.TextFormattingMode="Ideal"
-        TextOptions.TextRenderingMode="Auto">
+﻿<Page x:Class="FIOtoLoginPassword.View.GeneratorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:controls="clr-namespace:FNtoLoginPassword.View.Controls"
+      Title="FullName to Login:Password"      
+      Background="{DynamicResource MaterialDesignPaper}"
+      DataContext="{Binding Generator, Source={StaticResource Locator}}"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      Style="{StaticResource PageStyle}"
+      TextElement.FontSize="14"
+      TextElement.FontWeight="Regular"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto">
 
     <Page.Resources>
         <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedButton}">
@@ -210,3 +209,4 @@
         </materialDesign:DrawerHost>
     </materialDesign:DialogHost>
 </Page>
+

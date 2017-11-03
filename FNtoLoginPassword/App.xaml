@@ -5,8 +5,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:FNtoLoginPassword.ViewModel"
-             StartupUri="View/MainWindow.xaml"
-             mc:Ignorable="d">
+             StartupUri="View/GeneratorPage.xaml"
+             mc:Ignorable="d"
+             LoadCompleted="Application_LoadCompleted">
 
     <Application.Resources>
         <ResourceDictionary>
@@ -101,6 +102,19 @@
                 <Setter Property="Width" Value="{Binding Height, RelativeSource={RelativeSource Self}}"/>
             </Style>
 
+            <!--Стиль страниц-->
+            <Style x:Key="PageStyle" TargetType="Page" BasedOn="{StaticResource {x:Type Page}}">
+                <Setter Property="Background" Value="{DynamicResource MaterialDesignPaper}"/>
+                <Setter Property="FontFamily" Value="{StaticResource MaterialDesignFont}"/>
+                <Setter Property="Language" Value="ru-RU"/>
+                <Setter Property="SnapsToDevicePixels" Value="True"/>
+                <Setter Property="TextElement.Foreground" Value="{DynamicResource MaterialDesignBody}"/>
+                <Setter Property="TextElement.FontWeight" Value="Regular"/>
+                <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+                <Setter Property="TextOptions.TextRenderingMode" Value="Auto"/>
+                <Setter Property="Focusable" Value="False"/>
+            </Style>
+
             <!--ScrollViewer style-->
             <Style TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource MaterialDesignScrollViewer}">
                 <Setter Property="CanContentScroll" Value="False"/>
@@ -113,17 +127,6 @@
                 <Setter Property="Margin" Value="0,0,8,8"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
             </Style>
-
-            <ControlTemplate x:Key="NoElementsControl">
-                <Grid>
-                    <TextBlock Text="Данных нет"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontStyle="Italic"
-                           FontSize="18"
-                           Foreground="#909090"/>
-                </Grid>
-            </ControlTemplate>
         </ResourceDictionary>
     </Application.Resources>
     

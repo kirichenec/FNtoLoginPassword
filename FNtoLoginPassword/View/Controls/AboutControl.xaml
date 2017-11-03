@@ -42,13 +42,13 @@
 
             <TextBlock TextWrapping="Wrap" Margin="8,8,8,0">
                 <Run>
-                    The program generate login:password by full name. Supported English and Russian.
+                    Program generate login:password by full name. Supported English and Russian.
                 </Run>
             </TextBlock>
 
             <TextBlock TextWrapping="Wrap" Margin="8,8,8,0">
                 <Run>
-                    You can change the length and symbols of the password by changing the settings.
+                    You can change length and symbols of password by changing settings.
                 </Run>
             </TextBlock>
         </StackPanel>

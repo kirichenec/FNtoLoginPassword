@@ -14,12 +14,8 @@ namespace FNtoLoginPassword.ViewModel
     /// See http://www.mvvmlight.net
     /// </para>
     /// </summary>
-    public class MainViewModel : ViewModelBase
+    public class GeneratorViewModel : ViewModelBase
     {
-        #region Services
-
-        #endregion
-
         #region Properties
 
         #region private
@@ -78,6 +74,7 @@ namespace FNtoLoginPassword.ViewModel
             {
                 Set(IsBlackThemePropertyName, ref _isBlackTheme, value);
                 this.TempIsBlackTheme = value;
+                App.IsDarkMode = value;
                 new PaletteHelper().SetLightDark(value);
             }
         }
@@ -420,7 +417,7 @@ namespace FNtoLoginPassword.ViewModel
 
         #endregion
 
-        #region Settings: CloseSettingsCommand, SaveSettingsCommand
+        #region Settings: CloseSettingsCommand, ResetSettingsCommand, SaveSettingsCommand
 
         #region CloseSettingsCommand
         private RelayCommand _closeSettingsCommand;
@@ -440,6 +437,27 @@ namespace FNtoLoginPassword.ViewModel
                         this.TempPasswordSymbols = this.PasswordSymbols;
                         this.TempIsBlackTheme = this.IsBlackTheme;
                         DialogHost.CloseDialogCommand.Execute(null, null);
+                    }));
+            }
+        }
+        #endregion
+
+        #region ResetSettingsCommand
+        private RelayCommand _resetSettingsCommand;
+
+        /// <summary>
+        /// Gets the ResetSettingsCommand.
+        /// </summary>
+        public RelayCommand ResetSettingsCommand
+        {
+            get
+            {
+                return _resetSettingsCommand
+                    ?? (_resetSettingsCommand = new RelayCommand(
+                    () =>
+                    {
+                        this.PasswordLength = defaultLength;
+                        this.PasswordSymbols = defaultSymbols;
                     }));
             }
         }
@@ -592,7 +610,7 @@ namespace FNtoLoginPassword.ViewModel
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel()
+        public GeneratorViewModel()
         {
             SetTheme();
         }
