@@ -1,5 +1,4 @@
-﻿using FNtoLoginPassword.Model;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -593,7 +592,7 @@ namespace FNtoLoginPassword.ViewModel
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(IDataService dataService)
+        public MainViewModel()
         {
             SetTheme();
         }

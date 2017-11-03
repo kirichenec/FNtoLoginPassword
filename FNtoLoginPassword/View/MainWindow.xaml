@@ -186,7 +186,7 @@
                                  materialDesign:HintAssist.Hint="Full name"/>
                         <Button Grid.Row="0" Grid.Column="1" Content="Copy"
                         Command="{Binding CopyToClipboardCommand, Mode=OneWay}"
-                        CommandParameter="{Binding FN}"
+                        CommandParameter="{Binding FullName}"
                         HorizontalAlignment="Right"
                         ToolTip="Copy FN"/>
                         <Button Grid.Row="1" Grid.ColumnSpan="2" Content="Generate"
