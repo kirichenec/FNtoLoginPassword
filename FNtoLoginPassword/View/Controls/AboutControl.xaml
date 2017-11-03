@@ -42,7 +42,7 @@
 
             <TextBlock TextWrapping="Wrap" Margin="8,8,8,0">
                 <Run>
-                    The program generate login:password by full name.
+                    The program generate login:password by full name. Supported English and Russian.
                 </Run>
             </TextBlock>
 

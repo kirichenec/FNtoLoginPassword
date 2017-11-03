@@ -19,8 +19,6 @@ namespace FNtoLoginPassword.ViewModel
     {
         #region Services
 
-        private readonly IDataService _dataService;
-
         #endregion
 
         #region Properties
@@ -532,45 +530,57 @@ namespace FNtoLoginPassword.ViewModel
             }
             var result = string.Empty;
             string[] _splittedFN = _from.Split(' ');
-            _from = _splittedFN[0] + _splittedFN[1][0] + _splittedFN[2][0];
+            _from =
+                _splittedFN[0] +
+                (_splittedFN.Count() > 1 ? _splittedFN[1][0].ToString() : string.Empty) +
+                (_splittedFN.Count() > 2 ? _splittedFN[2][0].ToString() : string.Empty);
             foreach (var word in _from)
             {
-                switch (word)
+                // If English
+                if (Regex.IsMatch(word.ToString(), @"^[a-zA-Z]+$"))
                 {
-                    case 'а': result += 'a'; break;
-                    case 'б': result += 'b'; break;
-                    case 'в': result += 'v'; break;
-                    case 'г': result += 'g'; break;
-                    case 'д': result += 'd'; break;
-                    case 'е':
-                    case 'ё': result += 'e'; break;
-                    case 'ж': result += "zh"; break;
-                    case 'з': result += "z"; break;
-                    case 'и':
-                    case 'й': result += "i"; break;
-                    case 'к': result += "k"; break;
-                    case 'л': result += "l"; break;
-                    case 'м': result += "m"; break;
-                    case 'н': result += "n"; break;
-                    case 'о': result += "o"; break;
-                    case 'п': result += "p"; break;
-                    case 'р': result += "r"; break;
-                    case 'с': result += "s"; break;
-                    case 'т': result += "t"; break;
-                    case 'у': result += "u"; break;
-                    case 'ф': result += "f"; break;
-                    case 'х': result += "h"; break;
-                    case 'ц': result += "ts"; break;
-                    case 'ч': result += "ch"; break;
-                    case 'ш': result += "sh"; break;
-                    case 'щ': result += "shch"; break;
-                    case 'ъ': break;
-                    case 'ы': result += "y"; break;
-                    case 'ь': break;
-                    case 'э': result += "e"; break;
-                    case 'ю': result += "yu"; break;
-                    case 'я': result += "ya"; break;
-                    default: break;
+                    result += word;
+                }
+                // If Russion
+                if (Regex.IsMatch(word.ToString(), @"^[а-яА-Я]+$"))
+                {
+                    switch (word)
+                    {
+                        case 'а': result += 'a'; break;
+                        case 'б': result += 'b'; break;
+                        case 'в': result += 'v'; break;
+                        case 'г': result += 'g'; break;
+                        case 'д': result += 'd'; break;
+                        case 'е':
+                        case 'ё': result += 'e'; break;
+                        case 'ж': result += "zh"; break;
+                        case 'з': result += "z"; break;
+                        case 'и':
+                        case 'й': result += "i"; break;
+                        case 'к': result += "k"; break;
+                        case 'л': result += "l"; break;
+                        case 'м': result += "m"; break;
+                        case 'н': result += "n"; break;
+                        case 'о': result += "o"; break;
+                        case 'п': result += "p"; break;
+                        case 'р': result += "r"; break;
+                        case 'с': result += "s"; break;
+                        case 'т': result += "t"; break;
+                        case 'у': result += "u"; break;
+                        case 'ф': result += "f"; break;
+                        case 'х': result += "h"; break;
+                        case 'ц': result += "ts"; break;
+                        case 'ч': result += "ch"; break;
+                        case 'ш': result += "sh"; break;
+                        case 'щ': result += "shch"; break;
+                        case 'ъ': break;
+                        case 'ы': result += "y"; break;
+                        case 'ь': break;
+                        case 'э': result += "e"; break;
+                        case 'ю': result += "yu"; break;
+                        case 'я': result += "ya"; break;
+                        default: break;
+                    } 
                 }
             }
             return result;
@@ -585,7 +595,6 @@ namespace FNtoLoginPassword.ViewModel
         /// </summary>
         public MainViewModel(IDataService dataService)
         {
-            _dataService = dataService;
             SetTheme();
         }
         #endregion
