@@ -124,7 +124,7 @@
                                     </Grid>
 
                                     <CheckBox IsChecked="{Binding IsTopmost, Mode=TwoWay}"
-                                          HorizontalAlignment="Right"/>
+                                              HorizontalAlignment="Right"/>
                                 </Grid>
                             </Button>
                         </StackPanel>

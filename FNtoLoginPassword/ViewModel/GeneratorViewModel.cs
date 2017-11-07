@@ -101,6 +101,7 @@ namespace FNtoLoginPassword.ViewModel
             set
             {
                 Set(IsTopmostPropertyName, ref _isTopmost, value);
+                App.Current.MainWindow.Topmost = value;
             }
         }
         #endregion
