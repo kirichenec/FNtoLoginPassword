@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using MaterialDesignThemes.Wpf;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -9,10 +10,7 @@ using System.Windows;
 namespace FNtoLoginPassword.ViewModel
 {
     /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// See http://www.mvvmlight.net
-    /// </para>
+    /// This class contains properties that the main View can data bind to
     /// </summary>
     public class GeneratorViewModel : ViewModelBase
     {
@@ -406,7 +404,7 @@ namespace FNtoLoginPassword.ViewModel
                     ?? (_openExternalLinkCommand = new RelayCommand<string>(
                     link =>
                     {
-                        System.Diagnostics.Process.Start(link);
+                        Process.Start(link);
                     }));
             }
         }
@@ -414,7 +412,7 @@ namespace FNtoLoginPassword.ViewModel
 
         #endregion
 
-        #region Settings: CloseSettingsCommand, ResetSettingsCommand, SaveSettingsCommand
+        #region Settings: CloseSettingsCommand, LoadSettings, ResetSettingsCommand, SaveSettingsCommand
 
         #region CloseSettingsCommand
         private RelayCommand _closeSettingsCommand;
@@ -434,6 +432,27 @@ namespace FNtoLoginPassword.ViewModel
                         this.TempPasswordSymbols = this.PasswordSymbols;
                         this.TempIsBlackTheme = this.IsBlackTheme;
                         DialogHost.CloseDialogCommand.Execute(null, null);
+                    }));
+            }
+        }
+        #endregion
+
+        #region LoadSettings
+        private RelayCommand _loadSettings;
+
+        /// <summary>
+        /// Gets the LoadSettings.
+        /// </summary>
+        public RelayCommand LoadSettings
+        {
+            get
+            {
+                return _loadSettings
+                    ?? (_loadSettings = new RelayCommand(
+                    () =>
+                    {
+                        this.IsBlackTheme = App.IsDarkMode;
+                        new PaletteHelper().SetLightDark(this.IsBlackTheme);
                     }));
             }
         }
@@ -477,6 +496,8 @@ namespace FNtoLoginPassword.ViewModel
                         this.PasswordLength = this.TempPasswordLength;
                         this.PasswordSymbols = this.TempPasswordSymbols;
                         this.IsBlackTheme = this.TempIsBlackTheme;
+                        App.SaveSettings();
+
                         DialogHost.CloseDialogCommand.Execute(null, null);
                     }));
             }

@@ -16,8 +16,8 @@ namespace FNtoLoginPassword
         #region Properties
 
         #region private
-        private bool _firstRun = true;
-        private string _settingsName = "Settings.json";
+        private static bool _firstRun = true;
+        private static string _settingsName = "Settings.json";
         #endregion
 
         #region IsDarkMode
@@ -83,7 +83,7 @@ namespace FNtoLoginPassword
         #endregion
 
         #region SaveSettings
-        public void SaveSettings()
+        public static void SaveSettings()
         {
             var settings = new Settings()
             {
@@ -93,6 +93,9 @@ namespace FNtoLoginPassword
                 },
                 IsDarkTheme = IsDarkMode
             };
+
+            settings.IsDarkTheme = IsDarkMode;
+
             App.Current.MainWindow.WindowState = WindowState.Normal;
             settings.MainWindow.Height = App.Current.MainWindow.Height;
             settings.MainWindow.Width = App.Current.MainWindow.Width;
