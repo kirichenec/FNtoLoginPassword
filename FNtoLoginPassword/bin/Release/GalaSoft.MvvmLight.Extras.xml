@@ -4,6 +4,11 @@
         <name>GalaSoft.MvvmLight.Extras</name>
     </assembly>
     <members>
+        <member name="T:GalaSoft.MvvmLight.Helpers.DesignerLibrary">
+            <summary>
+            Helper class for platform detection.
+            </summary>
+        </member>
         <member name="T:GalaSoft.MvvmLight.Ioc.ISimpleIoc">
             <summary>
             A very simple IOC container with basic functionality needed to register and resolve
@@ -162,6 +167,11 @@
             IOC container implementing the IServiceLocator interface.
             The inspiration for this class is at https://gist.github.com/716137 but it has
             been extended with additional features.
+            </summary>
+        </member>
+        <member name="P:GalaSoft.MvvmLight.Ioc.SimpleIoc.Default">
+            <summary>
+            This class' default instance.
             </summary>
         </member>
         <member name="M:GalaSoft.MvvmLight.Ioc.SimpleIoc.ContainsCreated``1">
@@ -330,10 +340,10 @@
             <summary>
             Gets the service object of the specified type.
             </summary>
-            <exception cref="T:Microsoft.Practices.ServiceLocation.ActivationException">If the type serviceType has not
+            <exception cref="T:CommonServiceLocator.ActivationException">If the type serviceType has not
             been registered before calling this method.</exception>
             <returns>
-            A service object of type <paramref name="serviceType"/>.
+            A service object of type <paramref name="serviceType" />.
             </returns>
             <param name="serviceType">An object that specifies the type of service object to get.</param>
         </member>
@@ -363,7 +373,7 @@
             before, a new instance will be created. If an instance had already
             been created, that same instance will be returned.
             </summary>
-            <exception cref="T:Microsoft.Practices.ServiceLocation.ActivationException">If the type serviceType has not
+            <exception cref="T:CommonServiceLocator.ActivationException">If the type serviceType has not
             been registered before calling this method.</exception>
             <param name="serviceType">The class of which an instance
             must be returned.</param>
@@ -374,7 +384,7 @@
             Provides a way to get an instance of a given type. This method
             always returns a new instance and doesn't cache it in the IOC container.
             </summary>
-            <exception cref="T:Microsoft.Practices.ServiceLocation.ActivationException">If the type serviceType has not
+            <exception cref="T:CommonServiceLocator.ActivationException">If the type serviceType has not
             been registered before calling this method.</exception>
             <param name="serviceType">The class of which an instance
             must be returned.</param>
@@ -387,7 +397,7 @@
             key before, a new instance will be created. If an instance had already
             been created with the same key, that same instance will be returned.
             </summary>
-            <exception cref="T:Microsoft.Practices.ServiceLocation.ActivationException">If the type serviceType has not
+            <exception cref="T:CommonServiceLocator.ActivationException">If the type serviceType has not
             been registered before calling this method.</exception>
             <param name="serviceType">The class of which an instance must be returned.</param>
             <param name="key">The key uniquely identifying this instance.</param>
@@ -398,7 +408,7 @@
             Provides a way to get an instance of a given type. This method
             always returns a new instance and doesn't cache it in the IOC container.
             </summary>
-            <exception cref="T:Microsoft.Practices.ServiceLocation.ActivationException">If the type serviceType has not
+            <exception cref="T:CommonServiceLocator.ActivationException">If the type serviceType has not
             been registered before calling this method.</exception>
             <param name="serviceType">The class of which an instance must be returned.</param>
             <param name="key">The key uniquely identifying this instance.</param>
@@ -410,7 +420,7 @@
             before, a new instance will be created. If an instance had already
             been created, that same instance will be returned.
             </summary>
-            <exception cref="T:Microsoft.Practices.ServiceLocation.ActivationException">If the type TService has not
+            <exception cref="T:CommonServiceLocator.ActivationException">If the type TService has not
             been registered before calling this method.</exception>
             <typeparam name="TService">The class of which an instance
             must be returned.</typeparam>
@@ -421,7 +431,7 @@
             Provides a way to get an instance of a given type. This method
             always returns a new instance and doesn't cache it in the IOC container.
             </summary>
-            <exception cref="T:Microsoft.Practices.ServiceLocation.ActivationException">If the type TService has not
+            <exception cref="T:CommonServiceLocator.ActivationException">If the type TService has not
             been registered before calling this method.</exception>
             <typeparam name="TService">The class of which an instance
             must be returned.</typeparam>
@@ -434,7 +444,7 @@
             key before, a new instance will be created. If an instance had already
             been created with the same key, that same instance will be returned.
             </summary>
-            <exception cref="T:Microsoft.Practices.ServiceLocation.ActivationException">If the type TService has not
+            <exception cref="T:CommonServiceLocator.ActivationException">If the type TService has not
             been registered before calling this method.</exception>
             <typeparam name="TService">The class of which an instance must be returned.</typeparam>
             <param name="key">The key uniquely identifying this instance.</param>
@@ -445,16 +455,11 @@
             Provides a way to get an instance of a given type. This method
             always returns a new instance and doesn't cache it in the IOC container.
             </summary>
-            <exception cref="T:Microsoft.Practices.ServiceLocation.ActivationException">If the type TService has not
+            <exception cref="T:CommonServiceLocator.ActivationException">If the type TService has not
             been registered before calling this method.</exception>
             <typeparam name="TService">The class of which an instance must be returned.</typeparam>
             <param name="key">The key uniquely identifying this instance.</param>
             <returns>An instance corresponding to the given type and key.</returns>
-        </member>
-        <member name="P:GalaSoft.MvvmLight.Ioc.SimpleIoc.Default">
-            <summary>
-            This class' default instance.
-            </summary>
         </member>
     </members>
 </doc>
